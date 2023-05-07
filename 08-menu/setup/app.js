@@ -90,7 +90,14 @@ window.addEventListener("DOMContentLoaded", function () {
     },
     ["all"]
   );
-  console.log(categories);
+  const categoryBtns = categories
+    .map(function (category) {
+      return `<button class="filter-btn" type="button" data-category=${category}>
+          ${category}
+        </button>`;
+    })
+    .join("");
+  console.log(categoryBtns);
 });
 
 // Filter items
