@@ -80,7 +80,10 @@ const container = document.querySelector(".btn-container");
 // Load items
 window.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
+  displayMenuButtons();
+});
 
+function displayMenuButtons() {
   const categories = menu.reduce(
     function (values, item) {
       if (!values.includes(item.category)) {
@@ -116,7 +119,7 @@ window.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-});
+}
 
 function displayMenuItems(menuItems) {
   let displayMenu = menuItems.map(function (item) {
