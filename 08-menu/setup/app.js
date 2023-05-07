@@ -80,6 +80,11 @@ const filterBtns = document.querySelectorAll(".filter-btn");
 // Load items
 window.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
+
+  const categories = menu.map(function (item) {
+    return item.category;
+  });
+  console.log(categories);
 });
 
 // Filter items
