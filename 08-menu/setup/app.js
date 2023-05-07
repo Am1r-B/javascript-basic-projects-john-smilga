@@ -76,7 +76,6 @@ const menu = [
 
 const sectionCenter = document.querySelector(".section-center");
 const container = document.querySelector(".btn-container");
-const filterBtns = document.querySelectorAll(".filter-btn");
 
 // Load items
 window.addEventListener("DOMContentLoaded", function () {
@@ -99,21 +98,23 @@ window.addEventListener("DOMContentLoaded", function () {
     })
     .join("");
   container.innerHTML = categoryBtns;
-});
 
-// Filter items
-filterBtns.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
-    const category = e.currentTarget.dataset.category;
-    const menuCategory = menu.filter(function (menuItem) {
-      return menuItem.category === category;
+  const filterBtns = container.querySelectorAll(".filter-btn");
+
+  // Filter items
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      const category = e.currentTarget.dataset.category;
+      const menuCategory = menu.filter(function (menuItem) {
+        return menuItem.category === category;
+      });
+      // console.log(menuCategory);
+      if (category === "all") {
+        displayMenuItems(menu);
+      } else {
+        displayMenuItems(menuCategory);
+      }
     });
-    // console.log(menuCategory);
-    if (category === "all") {
-      displayMenuItems(menu);
-    } else {
-      displayMenuItems(menuCategory);
-    }
   });
 });
 
