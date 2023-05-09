@@ -91,7 +91,7 @@ function clearItems() {
   container.classList.remove("show-container");
   displayAlert("empty list", "danger");
   setBackToDefault();
-  // localStorage.removeItem("list")
+  localStorage.removeItem("list");
 }
 
 // delete function
@@ -105,7 +105,7 @@ function deleteItem(e) {
   displayAlert("item removed", "danger");
   setBackToDefault();
   // remove from local storage
-  // removeFromLocalStorage(id);
+  removeFromLocalStorage(id);
 }
 // edit function
 function editItem(e) {
@@ -133,7 +133,15 @@ function addToLocalStorage(id, value) {
   items.push(grocery);
   localStorage.setItem("list", JSON.stringify(items));
 }
-function removeFromLocalStorage(id) {}
+function removeFromLocalStorage(id) {
+  let items = getLocalStorage();
+
+  items = items.filter(function (item) {
+    return item.id !== id;
+  });
+
+  localStorage.setItem("list", JSON.stringify(items));
+}
 function editLocalStorage(id, value) {}
 function getLocalStorage() {
   return localStorage.getItem("list")
